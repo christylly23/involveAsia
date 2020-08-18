@@ -1,0 +1,116 @@
+
+
+
+<div class="modal-dialog modal-lg" role="document" id="test_modal">
+    <div class="modal-content">
+        <div class="modal-header border-0">
+          <h5 class="header-title col-11 p-0">Add Revenue Group</h5>
+          <button type="button" class="close px-4" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body p-0">
+          <div class="modal-content border-0">
+            <div class="card border-0 mb-4">
+                <div class="card-body p-0">
+                  <form class="col-12 p-0">
+                        <div class="form-group px-4">
+                            <label>Revenue Group Title</label>
+                            <input type="text" class="form-control" value="Fashion - 15%">
+                        </div>
+                        <div class="form-row px-4 col-6 mb-3 d-flex align-items-center">
+                            if &nbsp;&nbsp;
+                            <select class="form-control col-2">
+                                <option>ALL</option>
+                                <option>SOME</option>
+                            </select> 
+                            &nbsp;&nbsp;of the below conditions are met
+                        </div>
+                        <div id="rule_cont" class="mb-3">
+                            <div class="rules bg-light p-4">
+                                <h6 class="rule-title pb-3">RULE  1</h6>
+                                <div class="form-row mb-3"> 
+                                    <div class="col-1 form-group mb-0">
+                                        <select class="custom-select">
+                                            <option>ALL</option>
+                                            <option>SOME</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-1 form-group mb-0">
+                                        <select class="custom-select">
+                                            <option>is</option>
+                                            <option>are</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-9 input-group mb-0 rule-form">
+                                        <input type="text" class="form-control border-right-0" placeholder="insert parameter">
+                                        <div class="input-group-append">
+                                            <div class="input-group-text p-0 border-left-0 rule-part"><button type="button" id="btn_add_rule" class="btn btn-add-rule border-0 bg-white" style="height: 35px; color: #007bff">add rule</button></div>
+                                        </div>
+                                    </div>
+                                    <div class="col-1 form-row">
+                                        <div class="col-6 px-0 d-flex align-items-center">
+                                            <button type="button" class="btn btn-sm btn-minus btn-outline-dark rounded-circle d-flex align-items-center justify-content-center" style="width: 24px; height:24px;">-</button>
+                                        </div>
+                                        <div class="col-6 px-0 d-flex align-items-center">
+                                            <button type="button" id="btn_add" class="btn btn-sm btn-add btn-outline-dark rounded-circle d-flex align-items-center justify-content-center" style="width: 24px; height:24px;">+</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-row px-1 col-4 d-flex align-items-center mb-3 px-4">
+                            <div class="input-group">
+                                then revenue is &nbsp;&nbsp;<input type="text" class="form-control col-5 border-right-0">
+                                <div class="input-group-append">
+                                    <span class="input-group-text border-left-0 bg-white" style="color: #bfbfbf">%</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-row px-4">
+                            <button type="button" class="btn mr-2" style="background-color: #e68a00; color: white">Confirm</button>
+                            <button type="button" class="btn btn-secondary mr-2" data-dismiss="modal">Cancel</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+          </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    var counter = 1; var counter2 = 0;
+    
+    $(document).ready(function(){
+        
+    });
+    
+    $("#btn_add").click(function(event){
+        counter++;
+        $("#rule_cont").append('<hr class="m-0"><div class="rules'+ counter +' bg-light p-4"><h6 class="rule-title pb-3">RULE&nbsp;&nbsp;'+counter+'</h6><div class="form-row mb-3"><div class="col-1 form-group mb-0"><select class="custom-select"><option>ALL</option><option>SOME</option></select></div><div class="col-1 form-group mb-0"><select class="custom-select"><option>is</option><option>are</option></select></div><div class="col-9 input-group mb-0"><input type="text" class="form-control border-right-0" placeholder="insert parameter"><div class="input-group-append"><div class="input-group-text p-0 border-left-0"><button type="button" id="" class="btn btn-add-rule border-0 bg-white" style="height: 35px; color: #007bff">add rule</button></div></div></div><div class="col-1"></div></div></div>');
+    });
+    
+    $(".btn-minus").click(function(event){
+        var counterValue;
+        counterValue = counter;
+        if (counterValue == counter){
+            $(".rules"+ counter).remove();
+            counter--;
+        }
+    })
+    
+    $(".btn-add-rule").click(function(event){
+        counter2++;
+        $(".rules").append('<div class="form-row mb-3"><div class="col-1 form-group mb-0"></div><div class="col-1 form-group mb-0"></div><div class="col-9 input-group mb-0"><input type="text" class="form-control border-right-0" placeholder="insert parameter"><div class="input-group-append"><div class="input-group-text p-0 border-left-0"><button type="button" id="" class="btn btn-add-rule border-0 bg-white" style="height: 35px; color: #007bff">add rule</button></div></div></div><div class="col-1 form-row"><div class="col-6 px-0 d-flex align-items-center"><button type="button" disabled class="btn btn-sm btn-outline-dark rounded-circle d-flex align-items-center justify-content-center" style="width: 24px; height:24px;">-</button></div></div></div>');
+        
+        if (counter2 > 0){
+            $("#btn_add_rule").text("remove rule").css("color","red");
+            $(".rule-part button").removeClass("btn-add-rule");
+        }
+        
+       
+    });
+    
+</script>
+

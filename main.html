@@ -1,0 +1,39 @@
+<!doctype html>
+<html>
+<head>
+<title>Assignments</title>
+    
+<style>
+   
+</style>
+    
+<link rel="stylesheet" href="css/bootstrap.min.css">
+
+</head>
+<body>
+    <div class="container-fluid pt-3">
+        <button type="button" id="btn_add_revenue" class="btn btn-primary">Add Revenue Group</button>
+    </div>
+    <div class="modal fade" tabindex="-1" id="mainModal">
+        
+    </div>
+</body>
+<script src="js/jquery-3.4.1.js"></script>
+<script src="js/bootstrap.min.js"></script>
+    
+<script>
+    $(document).ready(function(){
+
+        
+    });
+    
+    $("#btn_add_revenue").click(function(event){
+        event.preventDefault();
+        $("#mainModal").load("modal.html", function(){
+            $("#mainModal").modal("show");
+        });
+    })
+ 
+    
+</script>
+</html>
